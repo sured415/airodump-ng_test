@@ -1,8 +1,9 @@
 #ifndef PACKET_HEAER_H
 #define PACKET_HEAER_H
-
 #endif // PACKET_HEAER_H
 
+#include <string>
+using namespace std;
 
 struct radiotap_header {
     uint8_t it_version;
@@ -29,8 +30,17 @@ struct IEEE80211_beacon {
     uint16_t seq_control;
 };
 
+#pragma pack(push, 1)
 struct IEEE80211_framebody_NIE {
     uint64_t timestamp;
     uint16_t bi;                /* Beacon Interval */
-    uint16_t ci;                 /* Capability Information */
+    uint16_t ci;                /* Capability Information */
+};
+#pragma pack(pop)
+
+struct print_value {
+    int pwr;
+    uint32_t beacon_count;
+    int ch;
+    string essid;
 };
